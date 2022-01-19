@@ -6,22 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    img {
+      height: 100px;
+    }
+  </style>
   <body>
-    <script>
-      // new Array(30).fill("").forEach((_, index) => {
-      //   fetch("http://localhost:3000?queryId=" + index);
-      // });
-      new Array(2).fill("").forEach(() => {
-        fetch("http://localhost:3000", {
-          method: "GET",
-        });
-      });
-      // new Array(30).fill("").forEach((_, index) => {
-      //   fetch("https://www.dingshiyi.cn:8000?queryId=" + index);
-      // });
-      // new Array(30).fill("").forEach((_, index) => {
-      //   fetch("https://www.dingshiyi.cn:8000");
-      // });
-    </script>
+    <div>
+      强制缓存
+      <img src="Expires.png" />
+      <img src="MaxAge.png" />
+    </div>
+    <div>
+      协商缓存
+      <img src="LastModified.png" />
+      <img src="Etag.png" />
+    </div>
   </body>
 </html>
