@@ -65,6 +65,7 @@ createServer(function (req, res) {
         _return = fs.readFileSync(
           resolve(__dirname, "../../assets/cache-Etag.png")
         );
+        break;
       default:
         res.statusCode = 404;
     }
