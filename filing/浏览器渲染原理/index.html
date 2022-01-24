@@ -25,19 +25,20 @@
   <body>
     <!-- 浏览器渲染顺序
     ========= 主线程 =========
-    1. html 解析器解析html，生成dom树  ->  document
+    0. Minor GC 新生代GC回收
+    1. Parse HTML 解析器解析html，生成dom树  ->  document
     2. 渲染引擎转换 css文本 为 styleSheets
-    3. 根据层叠样式表计算每个元素的具体样式（层叠规则与继承规则）  ->  ComputedStyle
+    3. Recalculate Style 根据层叠样式表计算每个元素的具体样式（层叠规则与继承规则）  ->  ComputedStyle
     4. 结合dom树与ComputedStyle创建布局树（遍历节点，只包含可见元素）
-    5. 布局计算Layout（计算每个元素的几何位置）
-    6. 布局树分层，创建分层layer树  -> Layers
-    7. paint commit到合成线程进行绘制
+    5. Layout 布局计算Layout（计算每个元素的几何位置）
+    6. Composite Layers 布局树分层，创建分层layer树  -> Layers
+    7. Paint commit到合成线程进行绘制
     ========= 合成线程 =========
     8. 合成线程将图层划分为图块（tiles）
     9. raster栅格化（将图块转换为位图）
     10. DrawQuad 绘制可见视口（viewport）的图块至内存，然后显示到屏幕
     11. display 显示
-    html/js/css -> DOM -> Recalculate Style -> Layout
+    html/js/css -> Parse HTML -> Recalculate Style -> Layout -> Composite Layers -> Paint -> Display
     -->
 
     <!-- 重排与重绘与合成
