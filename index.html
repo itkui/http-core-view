@@ -8,5 +8,22 @@
   </head>
 
   <body></body>
-  <script></script>
+  <script>
+    window.onload = () => {
+      fetch("./sw-http1").then(console.log);
+      fetch("./sw-http2").then(console.log);
+      fetch("./sw-http3").then(console.log);
+      fetch("./http1").then(console.log);
+      fetch("./http2").then(console.log);
+      fetch("./http3").then(console.log);
+    };
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("./serviceWorker.js", { scope: "./" })
+        .then((req) => {
+          console.info("sw is online, scope is " + req.scope);
+        })
+        .catch(console.log);
+    }
+  </script>
 </html>
